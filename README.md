@@ -63,7 +63,7 @@ cd myproject
 npm run dev
 
 
-🗂️ Output Structure
+<!-- 🗂️ Output Structure
 myproject/
 ├── src/
 │   ├── App.jsx
@@ -71,7 +71,7 @@ myproject/
 │   └── ...
 ├── vite.config.js
 ├── package.json
-└── ...
+└── ... -->
 
 
 ⚙️ How It Works
