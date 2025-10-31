@@ -1,10 +1,10 @@
 {
-  "name": "vite-forge",        
-  "version": "1.0.0",
+  "name": "vite-forge",
+  "version": "1.0.1",
   "description": "React + Tailwind + Vite starter CLI",
   "main": "src/create.js",
   "bin": {
-    "vite-forge": "src/create.js"   
+    "vite-forge": "src/create.js"
   },
   "type": "module",
   "dependencies": {
