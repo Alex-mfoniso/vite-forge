@@ -1,6 +1,6 @@
 {
   "name": "vite-forge",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React + Tailwind + Vite starter CLI",
   "main": "src/create.js",
   "bin": {
