@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-  import { execa } from "execa";
-  import fs from "fs";
-  import path from "path";
+import { execa } from "execa";
+import fs from "fs";
+import path from "path";
 
   export async function createProject() {
     try {
