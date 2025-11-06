@@ -1,4 +1,4 @@
-  #!/usr/bin/env node
+#!/usr/bin/env node
   import { execa } from "execa";
   import fs from "fs";
   import path from "path";
