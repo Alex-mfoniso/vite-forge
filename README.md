@@ -46,6 +46,17 @@ Create a project with a custom message inside `App.jsx`:
 vite-forge myproject "Hello world, this is Alex!"
 ```
 
+Important:
+During project creation, Vite may ask a few questions. Click No for these:
+
+“Use rollup-vite (Experimental)?” → select No
+
+“Install with npm and start now?” → select No (Vite-Forge handles dependencies and setup automatically)
+
+This ensures the project is created cleanly and ready for Vite-Forge to configure Tailwind and React.
+
+
+
 Start development:
 
 ```bash
