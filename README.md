@@ -1,120 +1,101 @@
-Vite-Forge ⚡
-A fast CLI tool for generating React + Tailwind + Vite projects.
-Vite-Forge is a lightweight command-line tool that instantly scaffolds a React + TailwindCSS project using Vite. It handles all setup automatically — no manual configuration required.
-
-✅ Features
 
 
-Creates a clean Vite + React project
+# Vite-Forge ⚡
 
+Generate a React + Tailwind + Vite project in seconds — **one command, zero config.**
 
-Installs and configures:
-
-
-react
-
-
-react-dom
-
-
-tailwindcss
-
-
-@tailwindcss/vite
+Vite-Forge is a lightweight CLI that bootstraps a fully-configured **React + Tailwind + Vite** starter instantly. No manual setup, no boilerplate cleanup, no Tailwind config headaches. Just run, open editor, start building.
 
 
 
+## 🔥 What It Does
 
-Auto-generates:
+* Creates a clean **Vite + React** project
+* Installs and configures:
 
+  * `react`, `react-dom`
+  * `tailwindcss`
+  * `@tailwindcss/vite`
+* Auto-generates project structure:
 
-vite.config.js (Tailwind plugin included)
+  * Tailwind-ready `vite.config.js`
+  * `src/index.css` with Tailwind imports
+  * `src/App.jsx` (customizable template text)
+* Removes default Vite boilerplate
+* Zero setup — **ready to dev immediately**
 
+---
 
-src/index.css (with Tailwind import)
+## 📦 Install
 
-
-src/App.jsx (customizable text)
-
-
-
-
-Cleans up default Vite boilerplate
-
-
-Zero configuration needed
-
-
-
-📦 Installation
-Install globally:
+```bash
 npm install -g vite-forge
+```
 
+---
 
-🚀 Usage
-Create a new project
+## 🚀 Create a Project
+
+```bash
 vite-forge myproject
+```
 
-Create a project with custom text inside App.jsx
+Create a project with a custom message inside `App.jsx`:
+
+```bash
 vite-forge myproject "Hello world, this is Alex!"
+```
 
-Start the dev server
+Start development:
+
+```bash
 cd myproject
 npm run dev
+```
 
+---
 
-<!-- 🗂️ Output Structure
-myproject/
-├── src/
-│   ├── App.jsx
-│   ├── index.css
-│   └── ...
-├── vite.config.js
-├── package.json
-└── ... -->
+## 🛠 How It Works
 
+Behind the scenes, Vite-Forge:
 
-⚙️ How It Works
-Under the hood, Vite-Forge performs the following steps:
+1. Runs `npm create vite@latest <projectName>`
+2. Installs React + Tailwind dependencies
+3. Injects Tailwind plugin into `vite.config.js`
+4. Generates Tailwind starter `index.css`
+5. Cleans default boilerplate
+6. Writes a fresh `App.jsx` using your custom message
 
+---
 
-Runs npm create vite@latest <projectName>
+## 📌 Arguments
 
+| Argument      | Description                              |
+| ------------- | ---------------------------------------- |
+| `projectName` | Name of your new project folder          |
+| `customText`  | Optional message that appears in App.jsx |
 
-Installs React + Tailwind dependencies
-
-
-Injects Tailwind plugin into vite.config.js
-
-
-Creates a Tailwind-powered index.css
-
-
-Clears default styles
-
-
-Writes a new App.jsx using your custom message
-
-
-
-📌 Arguments
-ArgumentDescriptionprojectNameThe name of the project foldercustomTextText to display inside the React app
 Example:
-vite-forge portfolio "Welcome to my portfolio"
 
+```bash
+vite-forge portfolio "Welcome to my Portfolio 🚀"
+```
 
-❗ Error Handling
-If something goes wrong (missing directory, failed install, etc), Vite-Forge prints detailed error logs and exits gracefully.
+---
 
-✅ Requirements
+## 🧩 Requirements
 
+* Node.js 16+
+* npm
 
-Node.js 16+
+---
 
+## 🪨 Error Handling
 
-npm
+If installation/config fails, Vite-Forge logs the error clearly and exits gracefully — no silent failures.
 
+---
 
+## 📄 License
 
-📄 License
 MIT License
