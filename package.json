@@ -7,7 +7,11 @@
     "vite-forge": "bin/index.js"
   },
   "type": "module",
+  "keywords": ["vite", "react", "tailwind", "typescript", "starter", "cli"],
+  "author": "Alexander Mfoniso",
+  "license": "MIT",
   "dependencies": {
-    "execa": "^8.0.0"
+    "execa": "^8.0.0",
+    "fs-extra": "^11.1.0"
   }
 }
