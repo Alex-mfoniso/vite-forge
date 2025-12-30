@@ -1,30 +1,26 @@
 
 
-# Vite-Forge ⚡
+# Vite Forge ⚡
 
-Generate a React + Tailwind + Vite project in seconds — **one command, zero config.**
+Opinionated React starter using Vite, TypeScript, Tailwind, Router.
 
-Vite-Forge is a lightweight CLI that bootstraps a fully-configured **React + Tailwind + Vite** starter instantly. No manual setup, no boilerplate cleanup, no Tailwind config headaches. Just run, open editor, start building.
-
-
+A zero-thinking React starter for real projects. Decisions are made for you — TypeScript-first, with routing and linting baked in.
 
 ## 🔥 What It Does
 
-* Creates a clean **Vite + React** project
+* Creates a **non-interactive** Vite + React project
+* TypeScript by default (use `--js` for JavaScript)
 * Installs and configures:
-
-  * `react`, `react-dom`
-  * `tailwindcss`
-  * `@tailwindcss/vite`
-* Auto-generates project structure:
-
-  * Tailwind-ready `vite.config.js`
-  * `src/index.css` with Tailwind imports
-  * `src/App.jsx` (customizable template text)
-* Removes default Vite boilerplate
-* Zero setup — **ready to dev immediately**
-
----
+  * React, React DOM
+  * TailwindCSS with PostCSS
+  * React Router for routing
+  * ESLint for code quality
+* Generates opinionated structure:
+  * `components/`, `pages/`, `hooks/`, `styles/` folders
+  * Ready-to-edit `App.tsx/jsx` and pages
+  * Proper Tailwind config and PostCSS setup
+* Templates: `basic`, `dashboard`, `landing`
+* Updates `package.json` with name, description, and scripts
 
 ## 📦 Install
 
@@ -32,81 +28,82 @@ Vite-Forge is a lightweight CLI that bootstraps a fully-configured **React + Tai
 npm install -g vite-forge
 ```
 
----
-
-## 🚀 Create a Project
+Or use npx:
 
 ```bash
-vite-forge myproject
+npx vite-forge myapp
 ```
 
-Create a project with a custom message inside `App.jsx`:
+## 🚀 Usage
 
 ```bash
-vite-forge myproject "Hello world, this is Alex!"
+npx vite-forge <project-name> [options]
 ```
 
-Important:
-During project creation, Vite may ask a few questions. Click No for these:
+### Options
 
-“Use rollup-vite (Experimental)?” → select No
+- `--ts`          Use TypeScript (default)
+- `--js`          Use JavaScript
+- `--template`    Template: basic | dashboard | landing (default: basic)
+- `--help`        Show help
+- `--version`     Show version
 
-“Install with npm and start now?” → select No (Vite-Forge handles dependencies and setup automatically)
-
-This ensures the project is created cleanly and ready for Vite-Forge to configure Tailwind and React.
-
-
-
-Start development:
+### Examples
 
 ```bash
-cd myproject
+# Basic TypeScript project
+npx vite-forge myapp
+
+# JavaScript with dashboard template
+npx vite-forge myapp --js --template dashboard
+
+# TypeScript landing page
+npx vite-forge myapp --template landing
+```
+
+Then:
+
+```bash
+cd myapp
 npm run dev
 ```
 
----
+## 📁 Project Structure
 
-## 🛠 How It Works
+After generation, your project looks like:
 
-Behind the scenes, Vite-Forge:
-
-1. Runs `npm create vite@latest <projectName>`
-2. Installs React + Tailwind dependencies
-3. Injects Tailwind plugin into `vite.config.js`
-4. Generates Tailwind starter `index.css`
-5. Cleans default boilerplate
-6. Writes a fresh `App.jsx` using your custom message
-
----
-
-## 📌 Arguments
-
-| Argument      | Description                              |
-| ------------- | ---------------------------------------- |
-| `projectName` | Name of your new project folder          |
-| `customText`  | Optional message that appears in App.jsx |
-
-Example:
-
-```bash
-vite-forge portfolio "Welcome to my Portfolio 🚀"
+```
+myapp/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── styles/
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── eslint.config.js
+└── package.json
 ```
 
----
+## ⚠️ What This Does NOT Do
 
-## 🧩 Requirements
+This is not:
+- A framework or full-stack solution
+- A plugin system or marketplace
+- A backend generator
+- A UI component library
+- Customizable beyond templates
 
-* Node.js 16+
-* npm
+Opinions are baked in. Config is overwritten. It's for getting started fast, not endless tweaking.
 
----
+## 🤝 Contributing
 
-## 🪨 Error Handling
-
-If installation/config fails, Vite-Forge logs the error clearly and exits gracefully — no silent failures.
-
----
+PRs welcome for bug fixes and template improvements. No feature creep.
 
 ## 📄 License
 
-MIT License
+MIT
