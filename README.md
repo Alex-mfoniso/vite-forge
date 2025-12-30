@@ -1,5 +1,3 @@
-
-
 # Vite Forge ⚡
 
 Opinionated React starter using Vite, TypeScript, Tailwind, Router.
@@ -8,19 +6,19 @@ A zero-thinking React starter for real projects. Decisions are made for you — 
 
 ## 🔥 What It Does
 
-* Creates a **non-interactive** Vite + React project
-* TypeScript by default (use `--js` for JavaScript)
-* Installs and configures:
-  * React, React DOM
-  * TailwindCSS with PostCSS
-  * React Router for routing
-  * ESLint for code quality
-* Generates opinionated structure:
-  * `components/`, `pages/`, `hooks/`, `styles/` folders
-  * Ready-to-edit `App.tsx/jsx` and pages
-  * Proper Tailwind config and PostCSS setup
-* Templates: `basic`, `dashboard`, `landing`
-* Updates `package.json` with name, description, and scripts
+- Creates a **non-interactive** Vite + React project
+- TypeScript by default (use `--js` for JavaScript)
+- Installs and configures:
+  - React, React DOM
+  - TailwindCSS with PostCSS
+  - React Router for routing
+  - ESLint for code quality
+- Generates opinionated structure:
+  - `components/`, `pages/`, `hooks/`, `styles/` folders
+  - Ready-to-edit `App.tsx/jsx` and pages
+  - Proper Tailwind config and PostCSS setup
+- Templates: `basic`, `dashboard`, `landing`
+- Updates `package.json` with name, description, and scripts
 
 ## 📦 Install
 
@@ -42,11 +40,11 @@ npx vite-forge <project-name> [options]
 
 ### Options
 
-- `--ts`          Use TypeScript (default)
-- `--js`          Use JavaScript
-- `--template`    Template: basic | dashboard | landing (default: basic)
-- `--help`        Show help
-- `--version`     Show version
+- `--ts` Use TypeScript (default)
+- `--js` Use JavaScript
+- `--template` Template: basic | dashboard | landing (default: basic)
+- `--help` Show help
+- `--version` Show version
 
 ### Examples
 
@@ -92,6 +90,7 @@ myapp/
 ## ⚠️ What This Does NOT Do
 
 This is not:
+
 - A framework or full-stack solution
 - A plugin system or marketplace
 - A backend generator

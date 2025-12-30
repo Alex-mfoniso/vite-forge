@@ -5,7 +5,8 @@ import fs from "fs";
 import path from "path";
 
 const require = createRequire(import.meta.url);
-const { version } = require("../../package.json");
+const { version } = require("../package.json");
+
 
 function parseArgs() {
   const args = process.argv.slice(2);

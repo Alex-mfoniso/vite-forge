@@ -1,8 +1,16 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import { runCommand } from "./utils/runCommand.js";
 import { validateProjectName } from "./utils/validateName.js";
 import { writeFileSafe } from "./utils/writeFileSafe.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+function readTemplate(templatePath, ts) {
+  const content = fs.readFileSync(templatePath, "utf8");
+  return ts ? content.replace(/\.jsx/g, ".tsx") : content;
+}
 
 export async function createProject({ projectName, ts, template }) {
   try {
@@ -94,7 +102,6 @@ export default defineConfig({
       path.join(target, "postcss.config.js"),
       `export default {
   plugins: {
-    tailwindcss: {},
     autoprefixer: {}
   }
 }
@@ -135,10 +142,11 @@ export default [
     if (!fs.existsSync(srcDir)) fs.mkdirSync(srcDir, { recursive: true });
 
     // Create folders
-    const folders = ['components', 'pages', 'hooks', 'styles'];
-    folders.forEach(folder => {
+    const folders = ["components", "pages", "hooks", "styles"];
+    folders.forEach((folder) => {
       const folderPath = path.join(srcDir, folder);
-      if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath, { recursive: true });
+      if (!fs.existsSync(folderPath))
+        fs.mkdirSync(folderPath, { recursive: true });
     });
 
     // Write index.css
@@ -148,7 +156,7 @@ export default [
     const mainContent = `import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App${ts ? '.tsx' : '.jsx'}'
+import App from './App${ts ? ".tsx" : ".jsx"}'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -159,176 +167,152 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 `;
-    writeFileSafe(path.join(srcDir, `main${ts ? '.tsx' : '.jsx'}`), mainContent);
+    writeFileSafe(
+      path.join(srcDir, `main${ts ? ".tsx" : ".jsx"}`),
+      mainContent
+    );
 
     // Generate template-specific content
-    if (template === 'basic') {
+    if (template === "basic") {
       // App.tsx
-      const appContent = `import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home${ts ? '.tsx' : '.jsx'}'
-
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
-  )
-}
-
-export default App
-`;
-      writeFileSafe(path.join(srcDir, `App${ts ? '.tsx' : '.jsx'}`), appContent);
+      const appContent = readTemplate(
+        path.join(__dirname, "templates", "basic", "App.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `App${ts ? ".tsx" : ".jsx"}`),
+        appContent
+      );
 
       // Home page
-      const homeContent = `import React from 'react'
-
-function Home() {
-  return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Welcome to your new React app!
-      </h1>
-    </div>
-  )
-}
-
-export default Home
-`;
-      writeFileSafe(path.join(srcDir, `pages/Home${ts ? '.tsx' : '.jsx'}`), homeContent);
-
-    } else if (template === 'dashboard') {
+      const homeContent = readTemplate(
+        path.join(__dirname, "templates", "basic", "Home.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `pages/Home${ts ? ".tsx" : ".jsx"}`),
+        homeContent
+      );
+    } else if (template === "dashboard") {
       // App.tsx with navigation
-      const appContent = `import { Routes, Route } from 'react-router-dom'
-import Dashboard from './pages/Dashboard${ts ? '.tsx' : '.jsx'}'
-import Sidebar from './components/Sidebar${ts ? '.tsx' : '.jsx'}'
-
-function App() {
-  return (
-    <div className="flex">
-      <Sidebar />
-      <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-        </Routes>
-      </main>
-    </div>
-  )
-}
-
-export default App
-`;
-      writeFileSafe(path.join(srcDir, `App${ts ? '.tsx' : '.jsx'}`), appContent);
+      const appContent = readTemplate(
+        path.join(__dirname, "templates", "dashboard", "App.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `App${ts ? ".tsx" : ".jsx"}`),
+        appContent
+      );
 
       // Dashboard page
-      const dashboardContent = `import React from 'react'
-
-function Dashboard() {
-  return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Card 1</h2>
-          <p className="text-gray-600">Some content here</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Card 2</h2>
-          <p className="text-gray-600">Some content here</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold">Card 3</h2>
-          <p className="text-gray-600">Some content here</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default Dashboard
-`;
-      writeFileSafe(path.join(srcDir, `pages/Dashboard${ts ? '.tsx' : '.jsx'}`), dashboardContent);
+      const dashboardContent = readTemplate(
+        path.join(__dirname, "templates", "dashboard", "Dashboard.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `pages/Dashboard${ts ? ".tsx" : ".jsx"}`),
+        dashboardContent
+      );
 
       // Sidebar component
-      const sidebarContent = `import React from 'react'
+      const sidebarContent = readTemplate(
+        path.join(__dirname, "templates", "dashboard", "Sidebar.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `components/Sidebar${ts ? ".tsx" : ".jsx"}`),
+        sidebarContent
+      );
 
-function Sidebar() {
-  return (
-    <aside className="w-64 bg-gray-800 text-white h-screen">
-      <div className="p-4">
-        <h2 className="text-2xl font-bold">Menu</h2>
-      </div>
-      <nav className="mt-8">
-        <ul>
-          <li className="p-4 hover:bg-gray-700">
-            <a href="/">Dashboard</a>
-          </li>
-          <li className="p-4 hover:bg-gray-700">
-            <a href="/">Settings</a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-  )
-}
+      // Header component
+      const headerContent = readTemplate(
+        path.join(__dirname, "templates", "dashboard", "Header.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `components/Header${ts ? ".tsx" : ".jsx"}`),
+        headerContent
+      );
 
-export default Sidebar
-`;
-      writeFileSafe(path.join(srcDir, `components/Sidebar${ts ? '.tsx' : '.jsx'}`), sidebarContent);
+      // StatCard component
+      const statCardContent = readTemplate(
+        path.join(__dirname, "templates", "dashboard", "StatCard.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `components/StatCard${ts ? ".tsx" : ".jsx"}`),
+        statCardContent
+      );
 
-    } else if (template === 'landing') {
+      // RecentActivity component
+      const recentActivityContent = readTemplate(
+        path.join(__dirname, "templates", "dashboard", "RecentActivity.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `components/RecentActivity${ts ? ".tsx" : ".jsx"}`),
+        recentActivityContent
+      );
+    } else if (template === "landing") {
       // App.tsx
-      const appContent = `import { Routes, Route } from 'react-router-dom'
-import Landing from './pages/Landing${ts ? '.tsx' : '.jsx'}'
-
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-    </Routes>
-  )
-}
-
-export default App
-`;
-      writeFileSafe(path.join(srcDir, `App${ts ? '.tsx' : '.jsx'}`), appContent);
+      const appContent = readTemplate(
+        path.join(__dirname, "templates", "landing", "App.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `App${ts ? ".tsx" : ".jsx"}`),
+        appContent
+      );
 
       // Landing page
-      const landingContent = `import React from 'react'
+      const landingContent = readTemplate(
+        path.join(__dirname, "templates", "landing", "Landing.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `pages/Landing${ts ? ".tsx" : ".jsx"}`),
+        landingContent
+      );
 
-function Landing() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <header className="container mx-auto px-6 py-8">
-        <nav className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800">Your Brand</h1>
-          <div className="space-x-4">
-            <a href="#features" className="text-gray-600 hover:text-gray-800">Features</a>
-            <a href="#about" className="text-gray-600 hover:text-gray-800">About</a>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-              Get Started
-            </button>
-          </div>
-        </nav>
-      </header>
+      // Hero component
+      const heroContent = readTemplate(
+        path.join(__dirname, "templates", "landing", "Hero.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `components/Hero${ts ? ".tsx" : ".jsx"}`),
+        heroContent
+      );
 
-      <main className="container mx-auto px-6 py-16 text-center">
-        <h2 className="text-5xl font-bold text-gray-800 mb-6">
-          Welcome to Your Landing Page
-        </h2>
-        <p className="text-xl text-gray-600 mb-8">
-          Build something amazing with React and Tailwind CSS.
-        </p>
-        <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg hover:bg-blue-700">
-          Learn More
-        </button>
-      </main>
-    </div>
-  )
-}
+      // Features component
+      const featuresContent = readTemplate(
+        path.join(__dirname, "templates", "landing", "Features.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `components/Features${ts ? ".tsx" : ".jsx"}`),
+        featuresContent
+      );
 
-export default Landing
-`;
-      writeFileSafe(path.join(srcDir, `pages/Landing${ts ? '.tsx' : '.jsx'}`), landingContent);
+      // About component
+      const aboutContent = readTemplate(
+        path.join(__dirname, "templates", "landing", "About.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `components/About${ts ? ".tsx" : ".jsx"}`),
+        aboutContent
+      );
+
+      // Footer component
+      const footerContent = readTemplate(
+        path.join(__dirname, "templates", "landing", "Footer.js"),
+        ts
+      );
+      writeFileSafe(
+        path.join(srcDir, `components/Footer${ts ? ".tsx" : ".jsx"}`),
+        footerContent
+      );
     }
 
     // Update package.json
@@ -338,7 +322,11 @@ export default Landing
       ...packageJson.scripts,
       lint: "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     };
-    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), "utf8");
+    fs.writeFileSync(
+      packageJsonPath,
+      JSON.stringify(packageJson, null, 2),
+      "utf8"
+    );
 
     console.log("Project setup complete");
     console.log(`cd ${validatedName}`);
