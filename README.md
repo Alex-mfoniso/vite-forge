@@ -6,7 +6,7 @@ A zero-thinking React starter for real projects. Decisions are made for you — 
 
 ## 🔥 What It Does
 
-- Creates a **non-interactive** Vite + React project
+- Creates a **non-interactive** Vite + React project (automatically answers "No" to experimental features and auto-install prompts)
 - TypeScript by default (use `--js` for JavaScript)
 - Installs and configures:
   - React, React DOM
