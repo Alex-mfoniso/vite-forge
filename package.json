@@ -8,6 +8,7 @@
   },
   "type": "module",
   "scripts": {
+    "build": "node scripts/build-docs.js",
     "docs": "node scripts/serve-docs.js"
   },
   "keywords": ["vite", "react", "tailwind", "typescript", "starter", "cli"],

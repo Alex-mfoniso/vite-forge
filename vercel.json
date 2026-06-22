@@ -1,0 +1,7 @@
+{
+  "installCommand": "echo Skipping dependency install for docs deploy",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false
+}

@@ -16,6 +16,14 @@ npm run docs
 
 Then open the URL printed in the terminal.
 
+For Vercel, this repository includes `vercel.json`. Vercel will run:
+
+```bash
+npm run build
+```
+
+The static site is copied into `dist/`, which Vercel publishes. The Vercel install step is skipped because the docs build only uses Node built-ins.
+
 ## What it does
 
 - Creates a non-interactive Vite + React project
