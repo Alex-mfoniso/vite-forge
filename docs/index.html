@@ -1,230 +1,143 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite Forge Docs</title>
-    <meta
-      name="description"
-      content="Documentation for Vite Forge, the opinionated React starter."
-    />
+    <meta name="description" content="Documentation for Vite Forge, the opinionated React starter." />
     <link rel="stylesheet" href="./styles.css" />
     <script src="./app.js" defer></script>
   </head>
   <body>
-    <div class="page-shell">
-      <aside class="sidebar">
-        <a class="brand" href="#top">
-          <span class="brand-mark">VF</span>
-          <span>
-            <strong>Vite Forge</strong>
-            <small>Documentation</small>
-          </span>
-        </a>
-
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="toc">
-          Menu
-        </button>
-
-        <nav id="toc" class="toc">
-          <a href="#overview">Overview</a>
-          <a href="#quick-start">Quick Start</a>
-          <a href="#commands">Commands</a>
-          <a href="#templates">Templates</a>
-          <a href="#structure">Project Structure</a>
-          <a href="#behavior">Behavior</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-
-        <div class="sidebar-card">
-          <p class="eyebrow">Install</p>
-          <code>npx vite-forge my-app</code>
-          <p class="muted">
-            Build a React app with Vite, Tailwind, Router, and ESLint configured for you.
-          </p>
+    <div class="layout">
+      <header class="mobile-header">
+        <div class="brand">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          Vite Forge
         </div>
-      </aside>
+        <button class="menu-toggle" aria-label="Toggle Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </header>
 
-      <main class="content">
-        <section class="hero" id="top">
-          <div class="hero-copy">
-            <p class="eyebrow">Opinionated starter</p>
-            <h1>Ship a React project without setting up the boilerplate by hand.</h1>
-            <p class="lede">
-              Vite Forge creates a ready-to-run Vite app with TypeScript or JavaScript,
-              Tailwind CSS, React Router, and a template that fits the way you want to start.
-            </p>
-            <div class="hero-actions">
-              <a class="button primary" href="#quick-start">Read the quick start</a>
-              <a class="button secondary" href="#templates">Explore templates</a>
+      <div class="container">
+        <aside class="sidebar">
+          <div class="brand" style="display: var(--sidebar-brand-display, flex)">
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            Vite Forge
+          </div>
+
+          <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="nav-search" class="search-input" placeholder="Search documentation..." />
+          </div>
+
+          <nav class="toc">
+            <div class="toc-group">Getting Started</div>
+            <a href="#introduction">Introduction</a>
+            <a href="#quick-start">Quick Start</a>
+            
+            <div class="toc-group">Core Concepts</div>
+            <a href="#commands">Commands</a>
+            <a href="#templates">Templates</a>
+            <a href="#structure">Project Structure</a>
+            
+            <div class="toc-group">Additional</div>
+            <a href="#faq">FAQ</a>
+          </nav>
+        </aside>
+
+        <main class="main-content">
+          <section id="introduction">
+            <p class="eyebrow">Documentation</p>
+            <h1>Introduction</h1>
+            <p class="lede">Ship your React projects without the boilerplate. Vite Forge creates a ready-to-run Vite app with standard tooling configured out of the box.</p>
+            
+            <div class="button-group">
+              <a href="#quick-start" class="btn btn-primary">Get Started</a>
+              <a href="https://github.com" target="_blank" class="btn btn-outline">GitHub</a>
             </div>
-          </div>
-
-          <div class="hero-panel">
-            <div class="glass-card">
-              <p class="eyebrow">Current defaults</p>
-              <ul class="stat-list">
-                <li><span>Language</span><strong>TypeScript</strong></li>
-                <li><span>Styling</span><strong>Tailwind CSS</strong></li>
-                <li><span>Routing</span><strong>React Router</strong></li>
-                <li><span>Linting</span><strong>ESLint</strong></li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="overview">
-          <div class="section-heading">
-            <p class="eyebrow">Overview</p>
-            <h2>What Vite Forge does</h2>
-          </div>
-          <div class="card-grid">
-            <article class="card">
-              <h3>Creates a Vite app</h3>
-              <p>
-                It scaffolds a new Vite project, then layers in the tooling and files the starter expects.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Sets up the stack</h3>
-              <p>
-                React, React DOM, Tailwind CSS, PostCSS, React Router, and ESLint are installed and configured.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Writes opinionated files</h3>
-              <p>
-                The generated app already includes a router-backed structure with pages, components, hooks, and styles folders.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="quick-start">
-          <div class="section-heading">
-            <p class="eyebrow">Quick Start</p>
-            <h2>Start a new project in one command</h2>
-          </div>
-          <div class="code-grid">
+            
+            <h2 id="quick-start">Quick Start</h2>
+            <p>Start a new project in one command using your terminal.</p>
             <pre><code>npm install -g vite-forge
 npx vite-forge my-app</code></pre>
+            <p>Navigate into your new project and start the development server:</p>
             <pre><code>cd my-app
 npm run dev</code></pre>
-          </div>
-        </section>
+          </section>
 
-        <section class="section" id="commands">
-          <div class="section-heading">
-            <p class="eyebrow">Commands</p>
-            <h2>CLI reference</h2>
-          </div>
-          <div class="card">
-            <ul class="command-list">
-              <li><code>npx vite-forge &lt;project-name&gt;</code> - create a new project</li>
-              <li><code>--ts</code> - use TypeScript, which is the default</li>
-              <li><code>--js</code> - use JavaScript instead of TypeScript</li>
-              <li><code>--template basic|dashboard|landing</code> - choose the starter template</li>
-              <li><code>--help</code> - show the built-in help text</li>
-              <li><code>--version</code> or <code>-v</code> - print the package version</li>
-            </ul>
-          </div>
-        </section>
+          <section id="commands">
+            <h2>Commands</h2>
+            <p>Vite Forge comes with a minimal CLI footprint to get you moving quickly.</p>
+            
+            <div class="grid">
+              <div class="card">
+                <h3><code>--ts</code></h3>
+                <p>Scaffolds configuration with strict TypeScript (Default behavior).</p>
+              </div>
+              <div class="card">
+                <h3><code>--js</code></h3>
+                <p>Overrides standard generation pipelines to process native JavaScript.</p>
+              </div>
+            </div>
+          </section>
 
-        <section class="section" id="templates">
-          <div class="section-heading">
-            <p class="eyebrow">Templates</p>
-            <h2>Pick the starting shape that fits your app</h2>
-          </div>
-          <div class="template-grid">
-            <article class="template-card">
-              <p class="template-tag">basic</p>
-              <h3>Minimal app shell</h3>
-              <p>A clean starting point with a single home page and router setup.</p>
-            </article>
-            <article class="template-card">
-              <p class="template-tag">dashboard</p>
-              <h3>Admin-style layout</h3>
-              <p>Includes a sidebar, header, stat cards, and activity feed for internal tools.</p>
-            </article>
-            <article class="template-card">
-              <p class="template-tag">landing</p>
-              <h3>Marketing page</h3>
-              <p>Includes a hero section, feature blocks, about section, and footer.</p>
-            </article>
-          </div>
-        </section>
+          <section id="templates">
+            <h2>Templates</h2>
+            <p>Pick the starting shape that fits your app architecture.</p>
+            
+            <div class="grid">
+              <div class="card">
+                <h3>Basic</h3>
+                <p>A clean application baseline with standard single routes cleanly mapped.</p>
+              </div>
+              <div class="card">
+                <h3>Dashboard</h3>
+                <p>Features structural side nav wrappers and layout panels for enterprise tools.</p>
+              </div>
+              <div class="card">
+                <h3>Landing</h3>
+                <p>Tailored sections configured cleanly for marketing content and presentations.</p>
+              </div>
+            </div>
+          </section>
 
-        <section class="section" id="structure">
-          <div class="section-heading">
-            <p class="eyebrow">Project Structure</p>
-            <h2>What gets generated</h2>
-          </div>
-          <div class="card">
+          <section id="structure">
+            <h2>Project Structure</h2>
+            <p>Predictable design system folders mapped cleanly to components, hooks, and views.</p>
             <pre><code>my-app/
-  src/
-    components/
-    pages/
-    hooks/
-    styles/
-    App.tsx
-    main.tsx
-    index.css
-  vite.config.js
-  tailwind.config.js
-  postcss.config.js
-  eslint.config.js
-  package.json</code></pre>
-          </div>
-        </section>
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── styles/
+│   ├── App.tsx
+│   └── main.tsx
+├── vite.config.ts
+├── tailwind.config.js
+└── package.json</code></pre>
+          </section>
 
-        <section class="section" id="behavior">
-          <div class="section-heading">
-            <p class="eyebrow">Behavior</p>
-            <h2>How the generator works</h2>
-          </div>
-          <div class="card-grid">
-            <article class="card">
-              <h3>Non-interactive</h3>
-              <p>
-                The CLI avoids Vite prompts and automatically chooses the starter template and install flow.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Opinionated config</h3>
-              <p>
-                Tailwind, PostCSS, and ESLint are written directly so the generated app is immediately usable.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Router ready</h3>
-              <p>
-                The generated project uses React Router from the start, so multi-page apps can grow naturally.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="faq">
-          <div class="section-heading">
-            <p class="eyebrow">FAQ</p>
-            <h2>Common questions</h2>
-          </div>
-          <div class="faq-list">
-            <details class="faq-item">
-              <summary>Can I use JavaScript instead of TypeScript?</summary>
-              <p>Yes. Pass <code>--js</code> when you run the CLI.</p>
-            </details>
-            <details class="faq-item">
-              <summary>Can I change the generated code later?</summary>
-              <p>Absolutely. Vite Forge is a starter, not a framework lock-in.</p>
-            </details>
-            <details class="faq-item">
-              <summary>How do I preview this docs site locally?</summary>
-              <p>Run <code>npm run docs</code> and open the local URL printed in the terminal.</p>
-            </details>
-          </div>
-        </section>
-      </main>
+          <section id="faq">
+            <h2>FAQ</h2>
+            <div class="accordion">
+              <div class="accordion-item">
+                <button class="accordion-trigger">Can I use JavaScript instead of TypeScript?</button>
+                <div class="accordion-content">
+                  <p>Yes. Pass <code>--js</code> when you run the CLI to override the default TypeScript setup.</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <button class="accordion-trigger">Can I change the generated code later?</button>
+                <div class="accordion-content">
+                  <p>Absolutely. Vite Forge establishes standard starter environments—there is no hidden framework lock-in.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   </body>
 </html>
