@@ -7,6 +7,9 @@
     "vite-forge": "bin/index.js"
   },
   "type": "module",
+  "scripts": {
+    "docs": "node scripts/serve-docs.js"
+  },
   "keywords": ["vite", "react", "tailwind", "typescript", "starter", "cli"],
   "author": "Alexander Mfoniso",
   "license": "MIT",

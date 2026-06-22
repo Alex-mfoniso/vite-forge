@@ -1,108 +1,110 @@
-# Vite Forge ⚡
+# Vite Forge
 
-Opinionated React starter using Vite, TypeScript, Tailwind, Router.
+Opinionated React starter using Vite, TypeScript, Tailwind, and React Router.
 
-A zero-thinking React starter for real projects. Decisions are made for you — TypeScript-first, with routing and linting baked in.
+A zero-thinking starter for real projects. Decisions are made for you: TypeScript-first, router-ready, and opinionated from the first command.
 
-## 🔥 What It Does
+## Documentation website
 
-- Creates a **non-interactive** Vite + React project (automatically answers "No" to experimental features and auto-install prompts)
-- TypeScript by default (use `--js` for JavaScript)
-- Installs and configures:
-  - React, React DOM
-  - TailwindCSS with PostCSS
-  - React Router for routing
-  - ESLint for code quality
-- Generates opinionated structure:
-  - `components/`, `pages/`, `hooks/`, `styles/` folders
-  - Ready-to-edit `App.tsx/jsx` and pages
-  - Proper Tailwind config and PostCSS setup
-- Templates: `basic`, `dashboard`, `landing`
-- Updates `package.json` with name, description, and scripts
+The project now includes a local documentation site in `docs/`.
 
-## 📦 Install
+Run it with:
+
+```bash
+npm run docs
+```
+
+Then open the URL printed in the terminal.
+
+## What it does
+
+- Creates a non-interactive Vite + React project
+- Uses TypeScript by default, with `--js` available
+- Installs and configures React, React DOM, Tailwind CSS, React Router, and ESLint
+- Generates an opinionated folder structure
+- Supports `basic`, `dashboard`, and `landing` templates
+
+## Install
 
 ```bash
 npm install -g vite-forge
 ```
 
-Or use npx:
+Or use `npx`:
 
 ```bash
-npx vite-forge myapp
+npx vite-forge my-app
 ```
 
-## 🚀 Usage
+## Usage
 
 ```bash
 npx vite-forge <project-name> [options]
 ```
 
-### Options
+## Options
 
-- `--ts` Use TypeScript (default)
+- `--ts` Use TypeScript, which is the default
 - `--js` Use JavaScript
-- `--template` Template: basic | dashboard | landing (default: basic)
+- `--template basic|dashboard|landing` Choose a starter template
 - `--help` Show help
-- `--version` Show version
+- `--version` or `-v` Show version
 
-### Examples
+## Examples
 
 ```bash
-# Basic TypeScript project
-npx vite-forge myapp
-
-# JavaScript with dashboard template
-npx vite-forge myapp --js --template dashboard
-
-# TypeScript landing page
-npx vite-forge myapp --template landing
+npx vite-forge my-app
+npx vite-forge my-app --js --template dashboard
+npx vite-forge my-app --template landing
 ```
 
 Then:
 
 ```bash
-cd myapp
+cd my-app
 npm run dev
 ```
 
-## 📁 Project Structure
+## Project structure
 
 After generation, your project looks like:
 
-```
-myapp/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── hooks/
-│   ├── styles/
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── eslint.config.js
-└── package.json
+```text
+my-app/
++-- src/
+|   +-- components/
+|   +-- pages/
+|   +-- hooks/
+|   +-- styles/
+|   +-- App.tsx
+|   +-- main.tsx
+|   +-- index.css
++-- vite.config.js
++-- tailwind.config.js
++-- postcss.config.js
++-- eslint.config.js
++-- package.json
 ```
 
-## ⚠️ What This Does NOT Do
+## Templates
 
-This is not:
+- `basic` gives you a minimal app shell
+- `dashboard` gives you an admin-style layout
+- `landing` gives you a marketing page starter
+
+## What this is not
 
 - A framework or full-stack solution
 - A plugin system or marketplace
 - A backend generator
 - A UI component library
-- Customizable beyond templates
 
-Opinions are baked in. Config is overwritten. It's for getting started fast, not endless tweaking.
+The point is speed and clarity, not endless setup.
 
-## 🤝 Contributing
+## Contributing
 
-PRs welcome for bug fixes and template improvements. No feature creep.
+PRs are welcome for bug fixes and template improvements.
 
-## 📄 License
+## License
 
 MIT
